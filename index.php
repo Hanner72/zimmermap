@@ -29,6 +29,9 @@
                 font-weight: 700;
                 color: white;
                 background-color: red;
+                border-style: solid;
+                border-width: thin;
+                text-decoration: none !important;
             }
             </style>
                 </head>  
