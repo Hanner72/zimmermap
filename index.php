@@ -14,6 +14,22 @@
             {
                 display:none;
             }
+            .jsgrid, .jsgrid *, .jsgrid :after, .jsgrid :before {
+                box-sizing: border-box;
+                text-decoration: none !important;
+            }
+            .jsgrid-pager-nav-button {
+                padding: .2em .6em;
+                box-sizing: border-box;
+                border-style: solid;
+                border-width: thin;
+                text-decoration: none !important;
+            }
+            .jsgrid-pager-current-page {
+                font-weight: 700;
+                color: white;
+                background-color: red;
+            }
             </style>
                 </head>  
                 <body>  
