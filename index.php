@@ -31,7 +31,10 @@
                 background-color: red;
                 border-style: solid;
                 border-width: thin;
-                text-decoration: none !important;
+                border-color: black;
+            }
+            div#grid_table {
+                margin-top: 30px;
             }
             </style>
                 </head>  
@@ -39,9 +42,10 @@
     
                     <div class="container">  
                     <br />
-                    <div class="table-responsive">  
-                        <h3 align="center">Adressen für Zimmersuchende ;-)</h3>
-                        <h4 align="center">Hier bitte die Adresse hinzufügen, aktualisieren oder löschen.</h4><br>
+                    <div class="table-responsive">
+                        <h3 align="center" class="ueberschrift">Adressen für Zimmersuchende ;-)</h3>
+                        <h4 align="center" class="buttonadmin">Hier bitte die Adresse hinzufügen, aktualisieren oder löschen.</h4><br>
+                        <br><br>
                         <div id="grid_table"></div>
                     </div>  
                     </div>
