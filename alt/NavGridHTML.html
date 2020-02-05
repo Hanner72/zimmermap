@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <title>Navigation Grid</title>          
+        <link rel="stylesheet" type="text/css" media="screen" href="jsgrid/jsgrid.min.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="jsgrid/jsgrid-theme.min.css" />
+
+        <style type="text/css">
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-size: 75%;
+        }
+        </style>
+
+        <script src="jsgrid/jsgrid.js" type="text/javascript"></script>
+        <script src="jsgrid/jsgrid.min.js" type="text/javascript"></script>
+        <!-- <script src="js/i18n/grid.locale-en.js" type="text/javascript"></script> -->
+
+        <script type="text/javascript">
+            $(function () {
+
+                jQuery("#navgrid").jqGrid({
+
+                    url: "GridPHP.php",
+                    editurl:"GridEditPHP.php",
+                    datatype: "json",
+                    mtype: "GET",
+                    //cellEdit: true,
+                    //cellsubmit: "remote",
+                    //cellurl: "GridEditPHP.php",
+                    colNames: ["Film ID","Title","Description","Length","Rating"],
+                    colModel: [
+                        { name: "film_id", index: "film_id", width: 40, editable: false, editoptions: {readonly:true,size: 10}},
+                        { name: "title", index: "title", width: 180, editable:true, editoptions: {size: 10}},           
+                        { name: "description", index: "description", width: 700, sortable: false, editable:true, edittype: "textarea", editoptions: {rows:"3", cols:"30"}},
+                        { name: "length", index: "length", width: 50, align: "right", editable:true, editoptions: {size: 10}},
+                        { name: "rating", index: "rating", width: 70, align: "right", editable:true, editoptions: {size: 10}}
+                    ],
+                    pager: "#pagernav",
+                    rowNum: 10,
+                    rowList: [10,20,30],
+                    sortname: "film_id",
+                    sortorder: "asc",
+                    viewrecords: true,
+                    //gridview: true,
+                    //autoencode: true,
+                    caption: "Navigation Table"
+                    //  height: 210
+
+                });
+
+                jQuery("#navgrid").jqGrid('navGrid','#pagernav',
+                {edit:true,add:true,del:true, search: false, view: true}, // options
+                {height: 280, reloadAfterSubmit:false, recreateForm: true, closeAfterEdit: true, editCaption: "The Edit Dialog", saveData: "Data has been changed! Save changes?", closeOnEscape: true}, // edit options
+                {height: 280, reloadAfterSubmit:false, recreateForm: true, closeAfterAdd: true, closeOnEscape: true}, // add options
+                {reloadAfterSubmit:false, closeOnEscape: true}, // del options
+                {}, // search options
+                {closeOnEscape: true}
+                );
+
+            });     
+        </script>
+
+    </head>
+    <body>
+        <table id="navgrid"><tr><td></td></tr></table>
+        <div id="pagernav"></div>
+    </body>
+    </html>
