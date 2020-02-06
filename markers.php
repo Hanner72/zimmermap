@@ -1,6 +1,6 @@
 <?php
 
-require("inc/config.inc.php");
+require 'inc/config.inc.php';
 
 //ini_set('display_errors', 1);
 //ini_set('display_startup_errors', 1);
@@ -19,7 +19,7 @@ function parseToXML($htmlStr)
     return $xmlStr;
 }
 
-$connect = new PDO("mysql:host=$dbserver;dbname=$dbname;charset=utf8", $dbuser, $dbpass);
+$connect = $pdo;
 
 $query = "SELECT * FROM markers";
 

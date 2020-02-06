@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
     <html>
     <head>
-        <title>Navigation Grid</title>          
+        <title>Zimmersuche</title>          
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" media="screen" href="jsgrid/jsgrid.min.css" />
         <link rel="stylesheet" type="text/css" media="screen" href="jsgrid/jsgrid-theme.min.css" />
