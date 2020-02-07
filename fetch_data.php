@@ -1,13 +1,12 @@
 <?php
-
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 require_once 'inc/config.inc.php' ;
 
+// $connect = new PDO("mysql:host=$dbserver;dbname=$dbname", $dbuser, $dbpass);
 $connect = $pdo;
-
 $method = $_SERVER['REQUEST_METHOD'];
 
 if ($method == 'GET') {
@@ -53,9 +52,7 @@ if ($method == "POST") {
     $api_address = preg_replace('/,/ ', ' ', $addresse);
     $api_address = preg_replace('/ +/ ', '+', $api_address);
     $url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' . $api_address . '&key=AIzaSyAUKiRWWU2Iz8EBxuRt6lCAdJ7J5zL0nww';
-// var_dump($url);
     $response = json_decode(file_get_contents($url));
-// var_dump($response);
     $lat = $response->results[0]->geometry->location->lat;
     $lng = $response->results[0]->geometry->location->lng;
     $data = array(
@@ -73,6 +70,21 @@ if ($method == "POST") {
     $query = "INSERT INTO markers (voller_name, addresse, mobil, tel, mail, www, lat, lng, kategorie) VALUES (:voller_name, :addresse, :mobil, :tel, :mail, :www, :lat, :lng, :kategorie)";
     $statement = $connect->prepare($query);
     $statement->execute($data);
+    $id = $connect->lastInsertId();
+    $response = [
+        'id' => $id,
+        'voller_name' => $_POST['voller_name'],
+        'addresse' => $_POST['addresse'],
+        'mobil' => $_POST['mobil'],
+        'tel' => $_POST['tel'],
+        'mail' => $_POST['mail'],
+        'www' => $_POST['www'],
+        'lat' => $lat,
+        'lng' => $lng,
+        'kategorie' => $_POST['kategorie'],
+    ];
+    header("Content-Type: application/json");
+    echo json_encode($response);
 }
 
 if ($method == 'PUT') {
@@ -90,18 +102,18 @@ if ($method == 'PUT') {
         ':kategorie' => $_PUT['kategorie'],
     );
     $query = "
-UPDATE markers
-SET voller_name = :voller_name,
-addresse = :addresse,
-mobil = :mobil,
-tel = :tel,
-mail = :mail,
-www = :www,
-lat = :lat,
-lng = :lng,
-kategorie = :kategorie
-WHERE id = :id
-";
+ UPDATE markers
+ SET voller_name = :voller_name,
+ addresse = :addresse,
+ mobil = :mobil,
+ tel = :tel,
+ mail = :mail,
+ www = :www,
+ lat = :lat,
+ lng = :lng,
+ kategorie = :kategorie
+ WHERE id = :id
+ ";
     $statement = $connect->prepare($query);
     $statement->execute($data);
 }

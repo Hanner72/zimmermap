@@ -8,61 +8,83 @@
     <link type="text/css" rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid-theme.min.css" />
     <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script> -->
-    <script type="text/javascript" src="js/jsgrid.js"></script>
+    <script type="text/javascript" src="jsgrid/jsgrid.js"></script>
 
     <link type="text/css" href="inc/styles.css" rel="stylesheet">
 
-    <style>
-        .hide {
-            display: none;
-        }
-    </style>
-</head>
+        <style>
+            .hide
+            {
+                display:none;
+            }
+            .jsgrid, .jsgrid *, .jsgrid :after, .jsgrid :before {
+                box-sizing: border-box;
+                text-decoration: none !important;
+            }
+            .jsgrid-pager-nav-button {
+                padding: .2em .6em;
+                box-sizing: border-box;
+                border-style: solid;
+                border-width: thin;
+                text-decoration: none !important;
+            }
+            .jsgrid-pager-current-page {
+                font-weight: 700;
+                color: white;
+                background-color: red;
+                border-style: solid;
+                border-width: thin;
+                border-color: black;
+            }
+            div#grid_table {
+                margin-top: 30px;
+            }
+            </style>
+                </head>  
+                <body>  
+    
+                    <div class="container">  
+                    <br />
+                    <div class="table-responsive">
+                        <h3 align="center" class="ueberschrift">Adressen für Zimmersuchende ;-)</h3>
+                        <h4 align="center" class="buttonadmin">Hier bitte die Adresse hinzufügen, aktualisieren oder löschen.</h4><br>
+                        <br><br>
+                        <div id="grid_table"></div>
+                    </div>  
+                    </div>
+                    <br>
+                    <a href="map.php" class="buttonweiss">Google Map</a><br><br><br>
 
-<body>
+                </body>  
+            </html>  
+            <script>
 
-    <br>
-    <a href="map.php" class="buttonweiss">Google Map</a><br><br><br>
+                $('#grid_table').jsGrid({
 
-    <div class="container">
-        <br />
-        <div class="table-responsive">
-            <h3 align="center">Adressen für Zimmersuchende ;-)</h3>
-            <h4 align="center">Hier bitte die Adresse hinzufügen, aktualisieren oder löschen.</h4><br>
-            <div id="grid_table"></div>
-        </div>
-    </div>
-</body>
+                    width: "100%",
+                    height: "870px",
 
-</html>
-<script>
+                    filtering: true,
+                    inserting: true,
+                    editing: true,
+                    sorting: true,
+                    paging: true,
+                    autoload: true,
+                    pageSize: 20,
+                    pageButtonCount: 5,
+                    insertedRowLocation: 'top',
+                    deleteConfirm: "Willst du die Adresse wirklich löschen?",
 
-    $('#grid_table').jsGrid({
+                    /* pagerFormat: "Seiten: {first} {prev} {pages} {next} {last}       {pageIndex} of {pageCount}",
+                    pagePrevText: "zurück",
+                    pageNextText: "nächste",
+                    pageFirstText: "erste",
+                    pageLastText: "letzte",
+                    pageNavigatorNextText: "...",
+                    pageNavigatorPrevText: "...", */
 
-        width: "100%",
-        height: "870px",
-
-        filtering: true,
-        inserting: true,
-        editing: true,
-        sorting: true,
-        paging: true,
-        autoload: true,
-        pageSize: 20,
-        pageButtonCount: 5,
-        insertedRowLocation: 'top',
-        deleteConfirm: "Willst du die Adresse wirklich löschen?",
-
-        /* pagerFormat: "Seiten: {first} {prev} {pages} {next} {last}       {pageIndex} of {pageCount}",
-        pagePrevText: "zurück",
-        pageNextText: "nächste",
-        pageFirstText: "erste",
-        pageLastText: "letzte",
-        pageNavigatorNextText: "...",
-        pageNavigatorPrevText: "...", */
-
-        controller: {
-            loadData: function (filter) {
+                    controller: {
+                        loadData: function (filter) {
                         var d = $.Deferred();
                         $.ajax({
                             type: "GET",
