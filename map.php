@@ -5,6 +5,9 @@
 
     <link type="text/css" href="inc/styles.css" rel="stylesheet">
 
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
     <title>WW Strabag - Zimmersuche Google Maps</title>
     <style>
       /* Always set the map height explicitly to define the size of the div
@@ -37,7 +40,7 @@
         Gasthaus: {
           label: 'G'
         },
-        Privat: {
+        Pension: {
           label: 'P'
         }
       };
@@ -52,8 +55,11 @@
         Gasthaus: {
           cmark: iconBase + 'gasthaus.png'
         },
-        Privat: {
+        Pension: {
           cmark: iconBase + 'privat.png'
+        },
+        "": {
+          cmark: iconBase + 'fragz_k.png'
         }
       };
 

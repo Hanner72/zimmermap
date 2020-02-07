@@ -12,26 +12,53 @@
 
     <link type="text/css" href="inc/styles.css" rel="stylesheet">
 
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
     <style>
-        .hide {
-            display: none;
-        }
-    </style>
+            .hide
+            {
+                display:none;
+            }
+            .jsgrid, .jsgrid *, .jsgrid :after, .jsgrid :before {
+                box-sizing: border-box;
+                text-decoration: none !important;
+            }
+            .jsgrid-pager-nav-button {
+                padding: .2em .6em;
+                box-sizing: border-box;
+                border-style: solid;
+                border-width: thin;
+                text-decoration: none !important;
+            }
+            .jsgrid-pager-current-page {
+                font-weight: 700;
+                color: white;
+                background-color: red;
+                border-style: solid;
+                border-width: thin;
+                border-color: black;
+            }
+            div#grid_table {
+                margin-top: 30px;
+            }
+            </style>
 </head>
 
-<body>
-
+<body>  
+    
+<div class="container">  
+    <br />
+    <div class="table-responsive">
+        <h3 align="center" class="ueberschrift">Adressen für Zimmersuchende ;-)</h3>
+        <h4 align="center" class="buttonadmin">Hier bitte die Adresse hinzufügen, aktualisieren oder löschen.</h4><br>
+        <br><br>
+        <div id="grid_table"></div>
+    </div>  
+    </div>
     <br>
     <a href="map.php" class="buttonweiss">Google Map</a><br><br><br>
 
-    <div class="container">
-        <br />
-        <div class="table-responsive">
-            <h3 align="center">Adressen für Zimmersuchende ;-)</h3>
-            <h4 align="center">Hier bitte die Adresse hinzufügen, aktualisieren oder löschen.</h4><br>
-            <div id="grid_table"></div>
-        </div>
-    </div>
 </body>
 
 </html>
@@ -40,7 +67,7 @@
     $('#grid_table').jsGrid({
 
         width: "100%",
-        height: "870px",
+        height: "750px",
 
         filtering: true,
         inserting: true,
@@ -48,18 +75,18 @@
         sorting: true,
         paging: true,
         autoload: true,
-        pageSize: 20,
+        pageSize: 15,
         pageButtonCount: 5,
-        insertedRowLocation: 'top',
+        insertedRowLocation: "top",
         deleteConfirm: "Willst du die Adresse wirklich löschen?",
 
-        /* pagerFormat: "Seiten: {first} {prev} {pages} {next} {last}       {pageIndex} of {pageCount}",
+        pagerFormat: "Seiten: {first} {prev} {pages} {next} {last}       {pageIndex} of {pageCount}",
         pagePrevText: "zurück",
         pageNextText: "nächste",
         pageFirstText: "erste",
         pageLastText: "letzte",
         pageNavigatorNextText: "...",
-        pageNavigatorPrevText: "...", */
+        pageNavigatorPrevText: "...",
 
         controller: {
             loadData: function (filter) {
@@ -172,7 +199,7 @@
                             { Name: "", Id: '' },
                             { Name: "Hotel", Id: 'Hotel' },
                             { Name: "Gasthaus", Id: 'Gasthaus' },
-                            { Name: "Privat", Id: 'Privat' }
+                            { Name: "Pension", Id: 'Pension' }
                         ], 
                         valueField: "Id", 
                         textField: "Name"
