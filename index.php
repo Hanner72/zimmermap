@@ -46,9 +46,11 @@
 </head>
 
 <body>  
-    
+  
+<?php include 'menu/menu.php'; ?>
+
 <div class="container">  
-    <br />
+    
     <div class="table-responsive">
         <h3 align="center" class="ueberschrift">Adressen für Zimmersuchende ;-)</h3>
         <h4 align="center" class="buttonadmin">Hier bitte die Adresse hinzufügen, aktualisieren oder löschen.</h4><br>
@@ -135,7 +137,8 @@
                     {
                         name: "voller_name", 
                         type: "text", 
-                        width: 60, 
+                        width: 60,
+                        autosearch: true,   // triggers searching when the user presses `enter` key in the filter input 
                         validate: "required"
                     },
                     {
@@ -167,11 +170,15 @@
                     {
                         name: "lat", 
                         type: "text", 
+                        css: 'hide',
+                        //filtering: false,
                         width: 20
                     },
                     {
                         name: "lng", 
-                        type: "text", 
+                        type: "text",
+                        css: 'hide',
+                        //filtering: false,
                         width: 20
                     },
                     /* {
@@ -205,7 +212,16 @@
                         textField: "Name"
                     },
                     {
-                        type: "control"
+                        type: "control",
+                        searchModeButtonTooltip: "zur Suche umschalten", // tooltip of switching filtering/inserting button in inserting mode
+                        insertModeButtonTooltip: "zum Einfügen umschalten", // tooltip of switching filtering/inserting button in filtering mode
+                        editButtonTooltip: "Ändern",                      // tooltip of edit item button
+                        deleteButtonTooltip: "Löschen",                  // tooltip of delete item button
+                        searchButtonTooltip: "Suche",                  // tooltip of search button
+                        clearFilterButtonTooltip: "Filter löschen",       // tooltip of clear filter button
+                        insertButtonTooltip: "Einfügen",                  // tooltip of insert button
+                        updateButtonTooltip: "Update",                  // tooltip of update item button
+                        cancelEditButtonTooltip: "Ändern abbrechen",         // tooltip of cancel editing button
                     }
                 ]
 
