@@ -69,7 +69,7 @@
     $('#grid_table').jsGrid({
 
         width: "100%",
-        height: "750px",
+        height: "600px",
 
         filtering: true,
         inserting: true,
@@ -77,7 +77,7 @@
         sorting: true,
         paging: true,
         autoload: true,
-        pageSize: 15,
+        pageSize: 12,
         pageButtonCount: 5,
         insertedRowLocation: "top",
         deleteConfirm: "Willst du die Adresse wirklich löschen?",
