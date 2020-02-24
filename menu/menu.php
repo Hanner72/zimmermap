@@ -10,7 +10,9 @@
   <a href="http://fotos.strabag-sport.at/referenzen.php"><i class="fa fa-picture-o"></i> Referenzbilder</a>
   <a href="http://fotos.strabag-sport.at/lieferscheine.php"><i class="fa fa-file-text"></i> Lieferscheine</a>
   <a href="http://zimmer.strabag-sport.at/"><i class="fa fa-home icon-circle"></i> Zimmer</a>
-  <a href="http://bewe.strabag-sport.at/"><i class="fa fa-cart-arrow-down"></i> Bestellwesen</a>
+  <a href="http://bewe.strabag-sport.at/" target="_blank"><i class="fa fa-cart-arrow-down"></i> Bestellwesen</a>
+  <a href="http://oas-strabag.at/" target="_blank"><i class="fa fa-life-ring"></i> OAS</a>
+  <a href="http://zeit.strabag-sport.at" target="_blank"><i class="fa fa-clock-o icon-circle"></i> Stunden</a>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
     <i class="fa fa-bars"></i>
   </a>
